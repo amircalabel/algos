@@ -73,6 +73,22 @@ En todos los casos, Φ baja estrictamente en cada vuelta (o el algoritmo termina
 
 **La búsqueda binaria las alcanza.** Cada comparación parte por la mitad el rango donde todavía puede estar x, así que después de ⌈log₂(n+1)⌉ comparaciones queda un solo hueco. Con n = 7 hay ocho huecos, y la búsqueda binaria los separa con tres comparaciones, que es exactamente ⌈log₂8⌉ = 3. **Es óptima.**
 
+### Código
+
+La implementación instrumentada está en
+[`codigos/ejercicio-02.py`](codigos/ejercicio-02.py).
+
+Puntos clave del código:
+
+- `busqueda_binaria_verificada(A, x)` es la búsqueda binaria con dos
+  `assert` que verifican el invariante y el potencial en cada vuelta.
+- El primer `assert` comprueba que si x está en A, su posición está en
+  `A[lo:hi]`. Esto es el invariante.
+- El segundo `assert` comprueba que `hi - lo` baja estrictamente en cada
+  vuelta (salvo cuando el ciclo termina). Esto es el potencial.
+- El programa corre siete casos de prueba (incluyendo arreglo vacío y
+  valores fuera de rango) e imprime la tabla de resultados.
+
 ### Casos de prueba
 
 | A                       | x   | Resultado    | Comparaciones |
@@ -92,6 +108,25 @@ En todos los casos, Φ baja estrictamente en cada vuelta (o el algoritmo termina
 - m=1, A[1]=3. 4 > 3, así que lo=2. Rango [2,3). x=4 podría estar en [2,3).
 - m=2, A[2]=5. 4 < 5, así que hi=2. Rango [2,2), vacío. x=4 no está.
 - Devuelve ("hueco", 2), que es la posición donde 4 debería insertarse. 
+
+**Figura 1.** Árbol de decisión de la búsqueda binaria para n = 7. Las 8 hojas corresponden a los 8 huecos. La altura es 3 = ⌊log₂ 8⌋, que es la cota del lema 4.
+```mermaid
+graph TD
+    A4["x < a4"] -->|sí| A2["x < a2"]
+    A4 -->|no| A6["x < a6"]
+    A2 -->|sí| A1["x < a1"]
+    A2 -->|no| A3["x < a3"]
+    A6 -->|sí| A5["x < a5"]
+    A6 -->|no| A7["x < a7"]
+    A1 -->|sí| h0["h0"]
+    A1 -->|no| h1["h1"]
+    A3 -->|sí| h2["h2"]
+    A3 -->|no| h3["h3"]
+    A5 -->|sí| h4["h4"]
+    A5 -->|no| h5["h5"]
+    A7 -->|sí| h6["h6"]
+    A7 -->|no| h7["h7"]
+```
 
 ### Conclusión
 

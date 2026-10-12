@@ -53,6 +53,11 @@ n₁ / n₀ ≈ 1000 / (1 + log₂(1000) / log₂ n₀) = 1000 / (1 + 9.97 / log
 
 Para n₀ = 10⁸ (log₂ n₀ ≈ 26.6): factor ≈ 1000 / (1 + 0.375) ≈ **727**. El cálculo numérico dio 770, del mismo orden. La diferencia viene de que la aproximación log₂ n₁ ≈ log₂ n₀ + log₂ f no es exacta.
 
+### Código
+
+El programa que calcula los factores de crecimiento está en
+[`codigos/ejercicio-01.py`](codigos/ejercicio-01.py).
+
 ### Resumen de los dos factores
 
 | Costo | Factor de crecimiento |

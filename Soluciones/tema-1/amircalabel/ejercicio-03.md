@@ -78,6 +78,24 @@ Cada operación (push, pop, mínimo) es una secuencia finita de operaciones ató
 
 **Nota sobre el "peor caso".** A diferencia del análisis amortizado de la Conferencia 4, aquí **cada operación individual** es O(1) en el peor caso. No hay una operación cara que se pague con operaciones baratas anteriores. Esto es importante: si una aplicación necesita que cada operación sea rápida (un sistema de tiempo real, una interfaz que no puede congelarse), esta estructura sirve, mientras que una estructura con O(1) amortizado no necesariamente.
 
+### Código
+
+La implementación con verificación del invariante está en
+[`codigos/ejercicio-03.py`](codigos/ejercicio-03.py).
+
+Puntos clave del código:
+
+- `PilaConMinimo` mantiene dos listas: `principal` y `minimos`.
+- `push(x)` apila x en `principal` y, solo si x ≤ tope de `minimos`,
+  también lo apila en `minimos`.
+- `pop()` saca de `principal` y, si el elemento sacado es igual al tope
+  de `minimos`, también saca de `minimos`.
+- El método `_verificar()` comprueba el invariante después de cada
+  operación: el tope de `minimos` es el mínimo de `principal`, y
+  `minimos` es no decreciente de abajo hacia arriba.
+- El programa imprime una traza de operaciones y corre un test aleatorio
+  de 10,000 operaciones.
+
 ### Casos de prueba
 
 | Operación | principal | minimos | Resultado |
@@ -97,6 +115,13 @@ Cada operación (push, pop, mínimo) es una secuencia finita de operaciones ató
 | pop() | [] | [] | 5 |
 | minimo() | [] | [] | error |
 
+![Evolución de las dos pilas con una secuencia de operaciones](figuras/ejercicio-03-pilas.png)
+
+**Figura 1.** Evolución de la pila `principal` y la pila `minimos` con
+una secuencia de push y pop. Obsérvese que el tope de `minimos` es
+siempre el mínimo de `principal`, y que `minimos` solo guarda los
+elementos que son mínimos históricos.
+
 **Verificación del invariante.** En cada paso, el tope de `minimos` es el mínimo de `principal`:
 
 - Después de push(5): min([5]) = 5 = tope de minimos. 
@@ -105,6 +130,7 @@ Cada operación (push, pop, mínimo) es una secuencia finita de operaciones ató
 - Después de pop() (saca 7): min([5,3]) = 3 = tope de minimos. 
 - Después de pop() (saca 3): min([5]) = 5 = tope de minimos. 
 - Después de push(2): min([5,2]) = 2 = tope de minimos. 
+
 
 ### Cota mínima
 

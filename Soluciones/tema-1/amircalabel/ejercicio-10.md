@@ -92,7 +92,7 @@ def par_mas_cercano_1d_aleatorio(P, semilla=0):
 
 ### Figura
 
-**Archivo:** ['figuras/ejercicio-10-reduccion.png']
+**Archivo:** ![](figuras/ejercicio-10-reduccion.png)
 
 ### Casos de prueba
 

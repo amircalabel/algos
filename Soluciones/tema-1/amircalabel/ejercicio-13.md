@@ -64,7 +64,7 @@ Cada acceso debe al menos llegar al nodo, así que Ω(1) por acceso, Ω(n) en to
 **Archivo:** `codigo/ejercicio-13.py`
 
 ### Figura
-**Archivo** ![](figuras/ejercicio-13-splay)
+**Archivo** ![](figuras/ejercicio-13-splay.png)
 ### Casos de prueba
 
 | n | Splay | Subir a la raíz | log₂ n |

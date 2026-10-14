@@ -81,7 +81,7 @@ La cota de la sección 6 de la Conferencia 5: **mezclar dos listas ordenadas de 
 
 ### Figura
 
-**Archivo:** ['figuras/ejercicio-09-intercalada.png']
+**Archivo:** ![](figuras/ejercicio-09-intercalada.png)
 
 ### Casos de prueba
 
